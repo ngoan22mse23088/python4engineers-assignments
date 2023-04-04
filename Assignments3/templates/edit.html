@@ -1,31 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Edit Item</title>
-</head>
-<body>
-	<h1>Edit Item</h1>
-	<form action="/update/{{item.id}}" method="POST">
-		<label for="name">Name:</label><br>
-		<input type="text" id="name" name="name" value="{{item.name}}" required><br>
+{% extends 'base.html' %}
 
-		<label for="brand">Brand:</label><br>
-		<input type="text" id="brand" name="brand" value="{{item.brand}}" required><br>
+{% block age %}
+<h1>{% block title %} Edit "{{ laptop.name }}" {% endblock %}</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="name" class="form-control"
+            value="{{ request.form['name'] or laptop['name'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="brand">Brand</label>
+        <textarea name="brand" placeholder="Brand" class="form-control">{{ request.form['brand'] }}</textarea>
+    </div>
 
-		<label for="old_price">Old Price:</label><br>
-		<input type="number" id="old_price" name="old_price" value="{{item.old_price}}" required><br>
+    <div class="form-group">
+        <label for="oldPrice">Old Price</label>
+        <textarea name="oldPrice" placeholder="Old Price" class="form-control">{{ request.form['oldPrice'] }}</textarea>
+    </div>
 
-		<label for="new_price">New Price:</label><br>
-		<input type="number" id="new_price" name="new_price" value="{{item.new_price}}" required><br>
+    <div class="form-group">
+        <label for="newPrice">New Price</label>
+        <textarea name="newPrice" placeholder="New Price" class="form-control">{{ request.form['newPrice'] }}</textarea>
+    </div>
 
-		<label for="percent_discount">Percent Discount:</label><br>
-		<input type="number" id="percent_discount" name="percent_discount" value="{{item.percent_discount}}" required><br>
+    <div class="form-group">
+        <label for="percentDiscount">Percent Discount</label>
+        <textarea name="percentDiscount" placeholder="PercentDiscount"
+            class="form-control">{{ request.form['percentDiscount'] }}</textarea>
+    </div>
 
-		<label for="best_seller">Best Seller:</label><br>
-		<input type="checkbox" id="best_seller" name="best_seller" {% if item.best_seller %}checked{% endif %}><br>
+    <div class="form-group">
+        <label for="bestSeller">Best Seller</label>
+        <textarea name="bestSeller" placeholder="Best Seller"
+            class="form-control">{{ request.form['bestSeller'] }}</textarea>
+    </div>
 
-		<br>
-		<input type="submit" value="Update">
-	</form> 
-</body>
-</html>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary inline-block"
+            onclick="The laptop has been edited successfully!">Submit</button>
+        <a class="" href="{{url_for('laptops')}}">Back</a>
+    </div>
+    <div class="form-group">
+    </div>
+
+</form>
+<hr>
+{% endblock %}

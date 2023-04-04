@@ -1,5 +1,6 @@
 class LaptopSeller:
-    def __init__(self, name, brand, old_price, new_price, percent_discount, best_seller):
+    def __init__(self, id, name, brand, old_price, new_price, percent_discount, best_seller):
+        self.id = id
         self.name = name
         self.brand = brand
         self.old_price = old_price

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block age %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Old Price</th>
+            <th>New Price</th>
+            <th>Percent Discount</th>
+            <th>Best Seller</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for laptop in laptops %}
+        <tr>
+            <td>{{laptop.id}}</td>
+            <td>{{laptop.name}}</td>
+            <td>{{laptop.brand}}</td>
+            <td>{{laptop.old_price}}</td>
+            <td>{{laptop.new_price}}</td>
+            <td>{{laptop.percent_discount}}</td>
+            <td>{{laptop.best_seller}}</td>
+            <td>
+                <form action="{{ url_for('edit', id=laptop.id) }}">
+                    <input type="submit" value="Edit" class="btn btn-warning btn-sm">
+                </form>
+
+                </form>
+            </td>
+            <td>
+                <form action="{{ url_for('delete', id=laptop.id) }}" method="POST">
+                    <input type="submit" value="Delete " class="btn btn-danger btn-sm"
+                        onclick="return confirm('Are you sure you want to delete this post?')">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+</table>
+</tbody>
+<hr>
+{% endblock %}
