@@ -1,0 +1,15 @@
+{% for product in products %}
+<tr>
+    <td>{{ product.id }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.brand }}</td>
+    <td>{{ product.old_price }}</td>
+    <td>{{ product.new_price }}</td>
+    <td>{{ product.discount_percent }}</td>
+    <td>{% if product.best_seller %}Yes{% else %}No{% endif %}</td>
+    <td>
+        <a href="{{ url_for('edit', id=product.id) }}" class="btn btn-sm btn-primary">Edit</a>
+        <a href="{{ url_for('delete', id=product.id) }}" class="btn btn-sm btn-danger">Delete</a>
+    </td>
+</tr>
+{% endfor %}

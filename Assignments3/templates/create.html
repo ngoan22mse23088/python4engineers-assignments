@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Item</title>
+</head>
+<body>
+	<h1>Create Item</h1>
+	<form action="/create" method="POST">
+		<label for="name">Name:</label><br>
+		<input type="text" id="name" name="name" required><br>
+
+		<label for="brand">Brand:</label><br>
+		<input type="text" id="brand" name="brand" required><br>
+
+		<label for="old_price">Old Price:</label><br>
+		<input type="number" id="old_price" name="old_price" required><br>
+
+		<label for="new_price">New Price:</label><br>
+		<input type="number" id="new_price" name="new_price" required><br>
+
+		<label for="percent_discount">Percent Discount:</label><br>
+		<input type="number" id="percent_discount" name="percent_discount" required><br>
+
+		<label for="best_seller">Best Seller:</label><br>
+		<input type="checkbox" id="best_seller" name="best_seller"><br>
+
+		<br>
+		<input type="submit" value="Submit">
+	</form> 
+</body>
+</html>
