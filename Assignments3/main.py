@@ -9,17 +9,15 @@ url = 'https://gearvn.com/collections/laptop-gaming-ban-chay'
 response = requests.get(url)
 
 soup = BeautifulSoup(response.text, 'html.parser')
-# print(soup)
 products = soup.find_all('div', {'class': 'product-row'})
-# print(products)
 data = []
 for product in products:
     name = product.find('h2', {'class': 'product-row-name'}).text.strip()
     # Đọc giá trị cũ
-    old_price = soup.find(
+    old_price = product.find(
         'div', {'class': 'product-row-price'}).find('del').text.strip()
     # Đọc giá mới
-    new_price = soup.find('span', {'class': 'product-row-sale'}).text.strip()
+    new_price = product.find('span', {'class': 'product-row-sale'}).text.strip()
     percent_discount = product.find(
         'div', {'class': 'new-product-percent'}).text.strip()
     best_seller = 1 if product.find(
@@ -54,27 +52,42 @@ print(df)
 df = pd.DataFrame(data)
 
 # Tính trung bình và trung vị của giá bán cũ và mới theo từng Brand
-df_mean = df.groupby('Brand')[['OldPrice', 'NewPrice']].mean().reset_index()
-df_median = df.groupby(
-    'Brand')[['OldPrice', 'NewPrice']].median().reset_index()
+agg_df = df.groupby("Brand").agg({"OldPrice": ["mean", "median"], "NewPrice": ["mean", "median"]})
+agg_df.columns = ["OldPrice_mean", "OldPrice_median", "NewPrice_mean", "NewPrice_median"]
+agg_df = agg_df.reset_index()
 
-# Trực quan hóa dữ liệu
-fig, ax = plt.subplots(2, 2, figsize=(12, 8))
+# vẽ biểu đồ boxplot
+fig, axs = plt.subplots(ncols=2, figsize=(12, 6))
 
-sns.barplot(x='Brand', y='OldPrice', data=df_mean, ax=ax[0][0])
-ax[0][0].set_title('Mean Old Price by Brand')
+sns.boxplot(x="Brand", y="OldPrice", data=df, ax=axs[0])
+sns.boxplot(x="Brand", y="NewPrice", data=df, ax=axs[1])
 
-sns.barplot(x='Brand', y='NewPrice', data=df_mean, ax=ax[0][1])
-ax[0][1].set_title('Mean New Price by Brand')
+axs[0].set_title("Old Price")
+axs[1].set_title("New Price")
 
-sns.barplot(x='Brand', y='OldPrice', data=df_median, ax=ax[1][0])
-ax[1][0].set_title('Median Old Price by Brand')
-
-sns.barplot(x='Brand', y='NewPrice', data=df_median, ax=ax[1][1])
-ax[1][1].set_title('Median New Price by Brand')
-
-plt.tight_layout()
 plt.show()
+
+# df_mean = df.groupby('Brand')[['OldPrice', 'NewPrice']].mean().reset_index()
+# df_median = df.groupby(
+#     'Brand')[['OldPrice', 'NewPrice']].median().reset_index()
+
+# # Trực quan hóa dữ liệu
+# fig, ax = plt.subplots(2, 2, figsize=(12, 8))
+
+# sns.barplot(x='Brand', y='OldPrice', data=df_mean, ax=ax[0][0])
+# ax[0][0].set_title('Mean Old Price by Brand')
+
+# sns.barplot(x='Brand', y='NewPrice', data=df_mean, ax=ax[0][1])
+# ax[0][1].set_title('Mean New Price by Brand')
+
+# sns.barplot(x='Brand', y='OldPrice', data=df_median, ax=ax[1][0])
+# ax[1][0].set_title('Median Old Price by Brand')
+
+# sns.barplot(x='Brand', y='NewPrice', data=df_median, ax=ax[1][1])
+# ax[1][1].set_title('Median New Price by Brand')
+
+# plt.tight_layout()
+# plt.show()
 
 # Nhận xét
 # Các Brand Laptop Gaming trong dataset có giá bán cũ và mới từ 10 triệu đồng đến 30 triệu đồng, với giá bán mới trung bình và trung vị thấp hơn giá bán cũ.
@@ -96,11 +109,26 @@ plt.show()
 
 # Trực quan mức giảm giá cao nhất và thấp nhất của sản phẩm mỗi Brand. Cho nhận xét
 
-df = pd.DataFrame(data, columns=['Brand', 'PercentDiscount', 'NewPrice'])
-df = df[df['PercentDiscount'] != '']
-df['PercentDiscount'] = df['PercentDiscount'].astype(float)
-df['NewPrice'] = df['NewPrice'].astype(int)
-sns.boxplot(x='Brand', y='PercentDiscount', data=df)
+df = pd.DataFrame(data)
+# df = df[df['PercentDiscount'] != '']
+# df['PercentDiscount'] = df['PercentDiscount'].astype(float)
+# df['NewPrice'] = df['NewPrice'].astype(int)
+# sns.boxplot(x='Brand', y='PercentDiscount', data=df)
+# Tính giá trị giảm giá cao nhất và thấp nhất của từng Brand
+discount_max = df.groupby('Brand').apply(lambda x: ((x['OldPrice'] - x['NewPrice']) / x['OldPrice']).max()).reset_index()
+discount_min = df.groupby('Brand').apply(lambda x: ((x['OldPrice'] - x['NewPrice']) / x['OldPrice']).min()).reset_index()
+discount_max.columns = ['Brand', 'DiscountMax']
+discount_min.columns = ['Brand', 'DiscountMin']
+
+# Trực quan hóa bằng biểu đồ column chart
+fig, ax = plt.subplots()
+ax.bar(discount_max['Brand'], discount_max['DiscountMax'], label='Max Discount')
+ax.bar(discount_min['Brand'], discount_min['DiscountMin'], label='Min Discount')
+ax.set_xlabel('Brand')
+ax.set_ylabel('Discount')
+ax.legend()
+plt.show()
+
 # Nhận xét: Boxplot cho phép chúng ta so sánh mức giảm giá và giá mới của các sản phẩm của các brand khác nhau.
 # Chúng ta có thể quan sát được rằng, các sản phẩm của brand Dell, MSI và Lenovo thường có mức giảm giá cao hơn so với các brand khác.
 # Tuy nhiên, các sản phẩm của brand Acer và Asus lại có giá trị trung bình và median cao hơn so với các brand khác.

@@ -29,7 +29,8 @@ class Database:
         cursor = con.cursor()
 
         try:
-            cursor.execute("SELECT Id, Name, Brand, OldPrice, NewPrice, PercentDiscount, BestSeller FROM laptopbestseller")
+            cursor.execute(
+                "SELECT Id, Name, Brand, OldPrice, NewPrice, PercentDiscount, BestSeller FROM laptopbestseller")
             data = cursor.fetchall()
             return [LaptopSeller(*laptopSeller) for laptopSeller in data]
         except:
