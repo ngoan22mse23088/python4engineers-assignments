@@ -48,4 +48,4 @@ Tạo Database tên LAPTOP Table với các fields đã nêu trên đặt tên L
 Môi trường Colab : https://github.com/ngoan22mse23088/python4engineers-assignments/blob/master/Assignments_Final.ipynb
 Môi trường local : https://github.com/ngoan22mse23088/python4engineers-assignments/tree/master/Assignments%20Final
 
-Contributions
+Contributions : ngoan22mse23088
