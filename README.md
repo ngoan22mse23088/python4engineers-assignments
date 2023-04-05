@@ -9,7 +9,7 @@ Assignments 2:
 Đọc dữ liệu cost_revenue_dirty.csv vào server, sau đó thực hiện truy vấn dữ liệu từ mysql-python.
 Chuyển dữ liệu thành DataFrame Pandas và thực hiện xử lý dữ liệu.
 Cuối cùng trực quan thể hiện doanh thu toàn cầu của 5 bộ phim đầu tiên của bảng.
-Môi trường Colab : https://github.com/ngoan22mse23088/python4engineers-assignments/blob/master/Assignments_2.ipynb
+Môi trường Colab : https://colab.research.google.com/github/ngoan22mse23088/python4engineers-assignments/blob/master/Assignments_2.ipynb
 Môi trường local : https://github.com/ngoan22mse23088/python4engineers-assignments/tree/master/Assignments%202
 
 Assignments 3:
@@ -17,7 +17,7 @@ Assignments 3:
 Dựa trên templates và dữ liệu được cung cấp. 
 Viết CRUD database function thông qua api với Flask. Hiển thị kết quả trên cửa sổ thực thi và templates.
 Templates : https://drive.google.com/file/d/1LUZuEqw2NiRaiQ2sVrDkFt5r4H-3UXgR/view
-Môi trường Colab : https://github.com/ngoan22mse23088/python4engineers-assignments/blob/master/Assignments_3.ipynb
+Môi trường Colab : https://colab.research.google.com/github/ngoan22mse23088/python4engineers-assignments/blob/master/Assignments_3.ipynb
 Môi trường local : https://github.com/ngoan22mse23088/python4engineers-assignments/tree/master/Assignments%203
 
 Final Assignments:
