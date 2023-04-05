@@ -33,7 +33,7 @@ def index():
 def create():
     return render_template('create.html')
 
-# Trang create mới
+# Trang create
 @app.route('/create', methods=['POST'])
 def addPost():
     form = request.form
