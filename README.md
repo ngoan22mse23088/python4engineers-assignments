@@ -2,37 +2,50 @@ FSBMSE: Python For Engineer Assignments
 CLASS : FSB-MSE12-2022
 MSHV : 22MSE23088
 HV NAME : LÊ CHÍ NGOAN
-Releases
+Releases : https://github.com/ngoan22mse23088/python4engineers-assignments
 
 Assignments 2:
 
 Đọc dữ liệu cost_revenue_dirty.csv vào server, sau đó thực hiện truy vấn dữ liệu từ mysql-python.
-Chuyển dữ liệu thành DataFrame Pandas và thực hiện xử lý dữ liệu. 
+Chuyển dữ liệu thành DataFrame Pandas và thực hiện xử lý dữ liệu.
 Cuối cùng trực quan thể hiện doanh thu toàn cầu của 5 bộ phim đầu tiên của bảng.
-
-https://github.com/khanh22mse23057/python4engineer-assignments/blob/main/Assignments2_Overview_M5_EDA.ipynb
+Môi trường Colab : https://github.com/ngoan22mse23088/python4engineers-assignments/blob/master/Assignments_2.ipynb
+Môi trường local : https://github.com/ngoan22mse23088/python4engineers-assignments/tree/master/Assignments%202
 
 Assignments 3:
-Bài tập 3: Đọc hiểu, chú thích lại bằng tiếng Việt và giải thích ngắn gọn các mô hình học của tutorial tại đây M5_Forecasting with LSTM and LightGBM | Kaggle https://www.kaggle.com/code/surekharamireddy/m5-forecasting-with-lstm-and-lightgbm
 
-https://github.com/khanh22mse23057/python4engineer-assignments/blob/main/Assignments3_M5_Forecasting_with_LSTM_and_LightGBM.ipynb
+Dựa trên templates và dữ liệu được cung cấp. 
+Viết CRUD database function thông qua api với Flask. Hiển thị kết quả trên cửa sổ thực thi và templates.
+Templates : https://drive.google.com/file/d/1LUZuEqw2NiRaiQ2sVrDkFt5r4H-3UXgR/view
+Môi trường Colab : https://github.com/ngoan22mse23088/python4engineers-assignments/blob/master/Assignments_3.ipynb
+Môi trường local : https://github.com/ngoan22mse23088/python4engineers-assignments/tree/master/Assignments%203
+
 Final Assignments:
-Superstore Sales Dataset Analysis | Kaggle: EDA + Prediction Hãy sử dụng Python và Jupyter Notebook để trả lời các câu hỏi sau:
 
-Tiền xử lý dữ liệu (xử lý các trường hợp thiếu dữ liệu, chuẩn hóa ngày tháng, đơn vị,...).
-Vẽ biểu đồ thể hiện biến động doanh số theo tháng. Cho biết doanh thu trung bình trong 3 tháng gần nhất.
-Vẽ biểu đồ doanh số bán hàng theo quý và cho biết quý nào có tổng doanh số cao nhất?
-Tính thời gian trung giao hàng trung bình (ship date - order date) theo từng tháng và vẽ biểu đồ mô tả sự biến thiên của con số này.
-Vẽ biểu đồ thể hiện sức mua theo từng thành phố. Cho biết top 3 thành phố có doanh số thấp nhất và 3 thành phố có doanh số cao nhất.
-Vẽ biểu đồ thể hiện tỉ trọng doanh số theo bang (state) và cho biết trung bình doanh số của 5 bang dẫn đầu về sức mua.
-Cho biết các bang dẫn đầu doanh số theo từng vùng (east, west, south, central,..).
-Cho biết top 3 sản phẩm có doanh thu cao nhất và top 3 sản phẩm có số lượng đơn vị bán ra cao nhất.
-Vẽ biểu đồ thể hiện tỉ trọng doanh số của từng category.
-Dự báo doanh số theo nhiều khía cạnh khác nhau trong tương lai: theo vùng, theo bang, theo category,.. và phát hành API để khai thác.
-https://colab.research.google.com/github/khanh22mse23057/python4engineer-assignments/blob/main/FinalAssignments_Practice%26Build_API_with_Superstore_Sales_Dataset_Analysis.ipynb
-Source code: https://github.com/khanh22mse23057/superstore-sales-api
-Triển khai API:
-Prod site: https://superstore-sale-api.fsbmse11.live/docs
-https://prnt.sc/vfFjpzE56ckh
+Cho link web sau: https://gearvn.com/collections/laptop-gaming-ban-chay
+Yêu cầu:
+Thực hiện Web scraping lấy hết các dữ liệu trong mục “LAPTOP GAMING BÁN CHẠY” với mỗi mục dữ liệu 
+gồm các trường (fields) sau:
+Name: ví dụ Laptop Gaming Acer Nitro 5 Eagle AN515 57 53F9
+OldPrice: ví dụ 25,990,000₫
+NewPrice: ví dụ 20,990,000₫
+PercentDiscount: ví dụ -19%
+BestSeller: ví dụ 1 (nếu có Best Seller) hoặc 0 (nếu không có Best Seller)
+Thực hiện xử lý dữ liệu thành các định dạng sau:
+Name (Str): Nitro 5 Eagle
+Brand (Str): Acer
+OldPrice (int): 2599000
+NewPrice (int): 20990000
+PercentDiscount (int): 19
+BestSeller (bool): 1
+Thực hiện trực quan sau:
+Trực quan trung bình và trung vị giá bán cũ và mới với các Brand. Cho nhận xét
+Trực quan đếm số sản phẩm của các Brand. Cho nhận xét
+Trực quan mức giảm giá cao nhất và thấp nhất của sản phẩm mỗi Brand. Cho nhận xét
+Trực quan mức giá mới của các sản phẩm là BestSeller. Cho nhận xét
+Tạo Database tên LAPTOP Table với các fields đã nêu trên đặt tên LAPTOPBESTSELLER. Viết CRUD database function với Flask cho phép ghi, đọc, chỉnh sửa và xoá các dữ liệu đã được xử lý vào database.
+
+Môi trường Colab : https://github.com/ngoan22mse23088/python4engineers-assignments/blob/master/Assignments_Final.ipynb
+Môi trường local : https://github.com/ngoan22mse23088/python4engineers-assignments/tree/master/Assignments%20Final
 
 Contributions
