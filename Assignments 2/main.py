@@ -1,13 +1,13 @@
-# thêm các thư viện cơ bản để xử lý
+# Thêm các thư viện cơ bản để xử lý
 import pandas as pd
 import mysql.connector
 import matplotlib.pyplot as plt
 
-# đọc dữ liệu từ file csv
+# Đọc dữ liệu từ file csv
 df = pd.read_csv(
     'https://raw.githubusercontent.com/ngoan22mse23088/python4engineers-assignments/master/cost_revenue_dirty.csv')
 
-# kết nối tới MySQL (port mặc định 3306)
+# Kết nối tới MySQL (port mặc định 3306)
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -30,7 +30,8 @@ for index, row in df.iterrows():
            production_budget, worldwide_gross, domestic_gross)
     mycursor.execute(sql, val)
 mydb.commit()
-# kiểm tra excute
+
+# Kiểm tra excute
 print(mycursor.rowcount, "records inserted.")
 
 # Truy vấn dữ liệu từ MySQL
